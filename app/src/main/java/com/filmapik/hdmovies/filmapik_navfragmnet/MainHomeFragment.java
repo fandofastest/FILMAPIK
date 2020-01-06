@@ -26,8 +26,8 @@ public class MainHomeFragment extends Fragment {
 
     private BottomNavigationView bottomNavigationView;
     private LinearLayout bottomNavBar;
-    private ImageButton btnMovies,btnHome;
-    private FloatingActionButton btnLiveTv;
+    private ImageButton btnLiveTv,btnHome;
+    private FloatingActionButton btnMovies;
     private Fragment fragment=null;
     private MainActivity activity;
 

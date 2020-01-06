@@ -74,22 +74,22 @@ public class HomeFragment extends Fragment {
     private Timer timer;
 
     private ShimmerFrameLayout shimmerFrameLayout;
-    private RecyclerView recyclerViewMovie, recyclerViewTv, recyclerViewTvSeries, recyclerViewGenre,recyclerViewPopular;
+    private RecyclerView recyclerViewMovie, recyclerViewTv, recyclerViewTvSeries, recyclerViewGenre,recyclerViewPopular,rvlatestmoviews,rvpopularmovies;
     private RecyclerView genreRv;
     private RecyclerView countryRv;
     private GenreAdapter genreAdapter;
     private GenreAdapter countryAdapter;
     private RelativeLayout genreLayout, countryLayout;
-    private HomePageAdapter adapterMovie, adapterSeries,adapterpopular;
+    private HomePageAdapter adapterMovie, adapterSeries,adapterpopular,adapterlatestmovies;
     private LiveTvHomeAdapter adapterTv;
-    private List<CommonModels> listMovie = new ArrayList<>();
+    private List<CommonModels> listlatestMovie = new ArrayList<>();
     private List<CommonModels> listTv = new ArrayList<>();
     private List<CommonModels> listpopular = new ArrayList<>();
     private List<CommonModels> listSeries = new ArrayList<>();
     private List<CommonModels> genreList = new ArrayList<>();
     private List<CommonModels> countryList = new ArrayList<>();
     private ApiResources apiResources;
-    private Button btnMoreMovie, btnMoreTv, btnMoreSeries,btnMorePopularTvseries;
+    private Button btnMoreMovie, btnMoreTv, btnMoreSeries,btnMorePopularTvseries,btnmorepopularmovies,btnmorelatestmovies;
 
     private int checkPass = 0;
 
@@ -131,8 +131,8 @@ public class HomeFragment extends Fragment {
 
         adView = view.findViewById(R.id.adView);
         adView1 = view.findViewById(R.id.adView1);
-        btnMoreSeries = view.findViewById(R.id.btn_more_series);
-        btnMorePopularTvseries=view.findViewById(R.id.btn_more_popular_series);
+        btnmorelatestmovies = view.findViewById(R.id.btn_more_latest_movie);
+        btnmorepopularmovies=view.findViewById(R.id.btn_more_popular_movie);
         btnMoreTv = view.findViewById(R.id.btn_more_tv);
         btnMoreMovie = view.findViewById(R.id.btn_more_movie);
 
@@ -192,30 +192,29 @@ public class HomeFragment extends Fragment {
 
 
         //----featured tv recycler view-----------------
-        recyclerViewPopular = view.findViewById(R.id.recyclerViewPopularTvSeries);
-        recyclerViewPopular.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false));
-        recyclerViewPopular.setHasFixedSize(true);
-        recyclerViewPopular.setNestedScrollingEnabled(false);
+        rvpopularmovies = view.findViewById(R.id.recyclerViewPopularmovies);
+        rvpopularmovies.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false));
+        rvpopularmovies.setHasFixedSize(true);
+        rvpopularmovies.setNestedScrollingEnabled(false);
         adapterpopular = new HomePageAdapter(getActivity(), listpopular);
-        recyclerViewPopular.setAdapter(adapterpopular);
+        rvpopularmovies.setAdapter(adapterpopular);
 
 
         //----movie's recycler view-----------------
-        recyclerViewMovie = view.findViewById(R.id.recyclerView);
-        recyclerViewMovie.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false));
-        recyclerViewMovie.setHasFixedSize(true);
-        recyclerViewMovie.setNestedScrollingEnabled(false);
-        adapterMovie = new HomePageAdapter(getContext(), listMovie);
-        recyclerViewMovie.setAdapter(adapterMovie);
-        recyclerViewMovie.setVisibility(View.GONE);
+        rvlatestmoviews = view.findViewById(R.id.recyclerLatestmovies);
+        rvlatestmoviews.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false));
+        rvlatestmoviews.setHasFixedSize(true);
+        rvlatestmoviews.setNestedScrollingEnabled(false);
+        adapterlatestmovies = new HomePageAdapter(getContext(), listlatestMovie);
+        rvlatestmoviews.setAdapter(adapterlatestmovies);
 
-        //----series's recycler view-----------------
-        recyclerViewTvSeries = view.findViewById(R.id.recyclerViewTvSeries);
-        recyclerViewTvSeries.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false));
-        recyclerViewTvSeries.setHasFixedSize(true);
-        recyclerViewTvSeries.setNestedScrollingEnabled(false);
-        adapterSeries = new HomePageAdapter(getActivity(), listSeries);
-        recyclerViewTvSeries.setAdapter(adapterSeries);
+//        //----series's recycler view-----------------
+//        recyclerViewTvSeries = view.findViewById(R.id.recyclerLatestmovies);
+//        recyclerViewTvSeries.setLayoutManager(new LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false));
+//        recyclerViewTvSeries.setHasFixedSize(true);
+//        recyclerViewTvSeries.setNestedScrollingEnabled(false);
+//        adapterSeries = new HomePageAdapter(getActivity(), listSeries);
+//        recyclerViewTvSeries.setAdapter(adapterSeries);
 
         //----genre's recycler view--------------------
         recyclerViewGenre = view.findViewById(R.id.recyclerView_by_genre);
@@ -237,11 +236,12 @@ public class HomeFragment extends Fragment {
             if (Constants.IS_COUNTRY_SHOW) {
                 getAllCountry();
             }
+            getLatestMovie();
+            getPopularMovies();
             getFeaturedTV();
             getSlider(apiResources.getSlider());
-            getLatestSeries();
+//            getLatestSeries();
             getPopularTvSeries();
-            getLatestMovie();
             getDataByGenre();
 
 
@@ -257,14 +257,16 @@ public class HomeFragment extends Fragment {
             @Override
             public void onRefresh() {
 
-                recyclerViewMovie.removeAllViews();
-                recyclerViewTv.removeAllViews();
-                recyclerViewTvSeries.removeAllViews();
-                recyclerViewGenre.removeAllViews();
+//                recyclerViewTv.removeAllViews();
+//                recyclerViewTvSeries.removeAllViews();
+//                recyclerViewGenre.removeAllViews();
+                rvlatestmoviews.removeAllViews();
+                rvpopularmovies.removeAllViews();
 
                 genreList.clear();
                 countryList.clear();
-                listMovie.clear();
+                listlatestMovie.clear();
+                listpopular.clear();
                 listSeries.clear();
                 listSlider.clear();
                 listTv.clear();
@@ -278,10 +280,11 @@ public class HomeFragment extends Fragment {
                     if (Constants.IS_COUNTRY_SHOW) {
                         getAllCountry();
                     }
+                    getLatestMovie();
+                    getPopularMovies();
                     getFeaturedTV();
                     getSlider(apiResources.getSlider());
-                    getLatestSeries();
-                    getLatestMovie();
+//                    getLatestSeries();
                     getDataByGenre();
                 } else {
                     tvNoItem.setText(getString(R.string.no_internet));
@@ -318,6 +321,25 @@ public class HomeFragment extends Fragment {
                 getActivity().startActivity(intent);
             }
         });
+
+        btnmorepopularmovies.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ItemMovieActivity.class);
+                intent.putExtra("url", apiResources.getPopular_movie());
+                intent.putExtra("title", "Movies");
+                getActivity().startActivity(intent);
+            }
+        });
+        btnmorelatestmovies.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getContext(), ItemMovieActivity.class);
+                intent.putExtra("url", apiResources.getLatest_movie());
+                intent.putExtra("title", "Movies");
+                getActivity().startActivity(intent);
+            }
+        });
         btnMoreTv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -328,25 +350,25 @@ public class HomeFragment extends Fragment {
             }
         });
 
-        btnMorePopularTvseries.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ItemSeriesActivity.class);
-                intent.putExtra("url", apiResources.getPopularTvSerieslist());
-                intent.putExtra("title", "TV Series");
-
-                getActivity().startActivity(intent);
-            }
-        });
-        btnMoreSeries.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getContext(), ItemSeriesActivity.class);
-                intent.putExtra("url", apiResources.getTvSeries());
-                intent.putExtra("title", "TV Series");
-                getActivity().startActivity(intent);
-            }
-        });
+//        btnMorePopularTvseries.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getContext(), ItemSeriesActivity.class);
+//                intent.putExtra("url", apiResources.getPopularTvSerieslist());
+//                intent.putExtra("title", "TV Series");
+//
+//                getActivity().startActivity(intent);
+//            }
+//        });
+//        btnMoreSeries.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Intent intent = new Intent(getContext(), ItemSeriesActivity.class);
+//                intent.putExtra("url", apiResources.getTvSeries());
+//                intent.putExtra("title", "TV Series");
+//                getActivity().startActivity(intent);
+//            }
+//        });
 
     }
 
@@ -623,6 +645,46 @@ public class HomeFragment extends Fragment {
 
     }
 
+
+    private void getPopularMovies() {
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, apiResources.getPopular_movie(), null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+
+                swipeRefreshLayout.setRefreshing(false);
+                shimmerFrameLayout.stopShimmer();
+                shimmerFrameLayout.setVisibility(View.GONE);
+
+                for (int i = 0; i < response.length(); i++) {
+
+                    try {
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        CommonModels models = new CommonModels();
+                        models.setImageUrl(jsonObject.getString("thumbnail_url"));
+                        models.setTitle(jsonObject.getString("title"));
+                        models.setVideoType("tvseries");
+                        models.setReleaseDate(jsonObject.getString("release"));
+                        models.setQuality(jsonObject.getString("video_quality"));
+                        models.setId(jsonObject.getString("videos_id"));
+                        listpopular.add(models);
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                }
+                adapterpopular.notifyDataSetChanged();
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+            }
+        });
+        singleton.addToRequestQueue(jsonArrayRequest);
+
+    }
     private void getLatestMovie() {
 
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, apiResources.getLatest_movie(), null, new Response.Listener<JSONArray>() {
@@ -641,13 +703,13 @@ public class HomeFragment extends Fragment {
                         models.setReleaseDate(jsonObject.getString("release"));
                         models.setQuality(jsonObject.getString("video_quality"));
                         models.setId(jsonObject.getString("videos_id"));
-                        listMovie.add(models);
+                        listlatestMovie.add(models);
 
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
                 }
-                adapterMovie.notifyDataSetChanged();
+                adapterlatestmovies.notifyDataSetChanged();
 
             }
         }, new Response.ErrorListener() {

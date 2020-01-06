@@ -384,11 +384,11 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="Popular TV Series"
+                        android:text="Popular Movies"
                         android:textAppearance="@style/TextAppearance.Medium.Bold" />
 
                     <Button
-                        android:id="@+id/btn_more_popular_series"
+                        android:id="@+id/btn_more_popular_movie"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -400,7 +400,7 @@
 
                 </LinearLayout>
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerViewPopularTvSeries"
+                    android:id="@+id/recyclerViewPopularmovies"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="vertical"
@@ -422,11 +422,11 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="@string/latest_tv_series"
+                        android:text="Latest Movies"
                         android:textAppearance="@style/TextAppearance.Medium.Bold" />
 
                     <Button
-                        android:id="@+id/btn_more_series"
+                        android:id="@+id/btn_more_latest_movie"
                         style="@style/Widget.AppCompat.Button.Borderless"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -438,7 +438,7 @@
 
                 </LinearLayout>
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerViewTvSeries"
+                    android:id="@+id/recyclerLatestmovies"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:scrollbars="vertical"

@@ -16,7 +16,13 @@ public class ApiResources {
 
 
     String slider = URL+"get_slider?"+API_SECRECT_KEY;
-    String latest_movie = URL+"get_latest_movies?"+API_SECRECT_KEY;
+    String latest_movie = URL+"get_latest_movies?"+API_SECRECT_KEY+"&&page=";
+    String popular_movie = URL+"get_popular_movies?"+API_SECRECT_KEY+"&&page=";
+
+    public String getPopular_movie() {
+        return popular_movie;
+    }
+
     String get_movie = URL+"get_movies?"+API_SECRECT_KEY+"&&page=";
     String get_featured_tv = URL+"get_featured_tv_channel?"+API_SECRECT_KEY;
     String get_live_tv = URL+"get_featured_tv_channel?"+API_SECRECT_KEY+"&&page=";

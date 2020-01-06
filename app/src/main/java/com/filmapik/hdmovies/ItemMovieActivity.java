@@ -225,11 +225,11 @@ public class ItemMovieActivity extends AppCompatActivity {
                         models.setQuality(jsonObject.getString("video_quality"));
                         models.setVideoType("movie");
                         models.setReleaseDate(jsonObject.getString("release"));
-                        if (jsonObject.getString("is_tvseries").equals("1") ) {
-                            models.setVideoType("tvseries");
-                        } else {
-                            models.setVideoType("movie");
-                        }
+//                        if (jsonObject.getString("is_tvseries").equals("1") ) {
+//                            models.setVideoType("tvseries");
+//                        } else {
+//                            models.setVideoType("movie");
+//                        }
 
 
                         models.setId(jsonObject.getString("videos_id"));
