@@ -663,7 +663,7 @@ public class HomeFragment extends Fragment {
                         CommonModels models = new CommonModels();
                         models.setImageUrl(jsonObject.getString("thumbnail_url"));
                         models.setTitle(jsonObject.getString("title"));
-                        models.setVideoType("tvseries");
+                        models.setVideoType("movie");
                         models.setReleaseDate(jsonObject.getString("release"));
                         models.setQuality(jsonObject.getString("video_quality"));
                         models.setId(jsonObject.getString("videos_id"));
