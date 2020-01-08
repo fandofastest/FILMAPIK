@@ -20,7 +20,7 @@ apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId "com.filmapik.hdmovies"
+        applicationId "com.filmapik.indoxxi"
         minSdkVersion 21
         targetSdkVersion 29
         versionCode 1

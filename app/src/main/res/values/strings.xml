@@ -4,7 +4,7 @@
     <!--app_title for main navigation & home title-->
     <string name="app_title">FilmApik - Free HD  Movies</string>
     <string name="app_version">1.0.0</string>
-    <string name="contact_email">admin@FilmApik.com</string>
+    <string name="contact_email">admin@FilmApik.fun</string>
     <string name="copyright_text">Copyright @ FilmApik \nAll right reserved</string>
     <!-- App -->
     <string name="featured_tv_channels">Featured Tv Channel</string>
@@ -348,7 +348,7 @@ Contact Us
 If you have any questions about these Terms and Conditions, You can contact
 us:
 
-  * By visiting this page on our website: http://www.filmapik.com/
+  * By visiting this page on our website: https://filmapik.fun/
 
 
     </string>

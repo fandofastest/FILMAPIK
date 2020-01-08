@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "229431947511",
-    "firebase_url": "https://filmapik-990c7.firebaseio.com",
-    "project_id": "filmapik-990c7",
-    "storage_bucket": "filmapik-990c7.appspot.com"
+    "project_number": "758355588178",
+    "firebase_url": "https://filmapik-57e75.firebaseio.com",
+    "project_id": "filmapik-57e75",
+    "storage_bucket": "filmapik-57e75.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:229431947511:android:af71c945ded86b568223f2",
+        "mobilesdk_app_id": "1:758355588178:android:316447b9ca8756ede79b8b",
         "android_client_info": {
-          "package_name": "com.filmapik.hdmovies"
+          "package_name": "com.filmapik.indoxxi"
         }
       },
       "oauth_client": [
         {
-          "client_id": "229431947511-gn7q728nc08db8hh0ql5k3kj2ikhsq2f.apps.googleusercontent.com",
+          "client_id": "758355588178-5l69p08qj20olqa1phiae077j6suonra.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCKrB3im6MR-_AblRRY31z8q8DE9HZRu0g"
+          "current_key": "AIzaSyA9tkdEg53lwiWaR0s-vP59jVMRWtOj_FY"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "229431947511-gn7q728nc08db8hh0ql5k3kj2ikhsq2f.apps.googleusercontent.com",
+              "client_id": "758355588178-5l69p08qj20olqa1phiae077j6suonra.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
