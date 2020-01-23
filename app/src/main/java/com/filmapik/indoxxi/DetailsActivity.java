@@ -603,7 +603,7 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
         simpleExoPlayerView.setControllerVisibilityListener(new PlayerControlView.VisibilityListener() {
             @Override
             public void onVisibilityChange(int visibility) {
-                Log.e("Visibil", String.valueOf(visibility));
+                Log.e("Visibility", String.valueOf(visibility));
                 if (visibility == 0) {
                     imgBack.setVisibility(VISIBLE);
                     imgFull.setVisibility(VISIBLE);
@@ -1074,16 +1074,39 @@ public class DetailsActivity extends AppCompatActivity implements CastPlayer.Ses
     private void openWebActivity(String s, Context context, String type) {
 
         if (isPlaying) {
+            player.stop();
             player.release();
 
         }
-
+        player.stop();
+        player.release();
         progressBar.setVisibility(GONE);
         playerLayout.setVisibility(GONE);
         downloadIv.setVisibility(GONE);
 
         webView.loadUrl(s);
-        webView.setWebChromeClient(new WebChromeClient());
+        progressBar.setVisibility(VISIBLE);
+        webView.setWebChromeClient(new WebChromeClient(){
+            /*
+                public void onProgressChanged (WebView view, int newProgress)
+                    Tell the host application the current progress of loading a page.
+
+                Parameters
+                    view WebView: The WebView that initiated the callback.
+
+                    newProgress int: Current page loading progress, represented by an
+                        integer between 0 and 100.
+            */
+            public void onProgressChanged(WebView view, int newProgress){
+
+
+                if(newProgress == 100){
+
+                    progressBar.setVisibility(View.GONE);
+                }
+            }
+        });
+
         WebSettings webSettings = webView.getSettings();
         webSettings.setJavaScriptEnabled(true);
         webView.setVisibility(VISIBLE);
