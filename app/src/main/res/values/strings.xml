@@ -1,10 +1,10 @@
 <resources>
 
-    <string name="app_name">FilmApik - Free HD  Movies</string>
+    <string name="app_name">Fmoviez - Free HD  Movies</string>
     <!--app_title for main navigation & home title-->
-    <string name="app_title">FilmApik - Free HD  Movies</string>
-    <string name="app_version">1.0.0</string>
-    <string name="contact_email">admin@FilmApik.fun</string>
+    <string name="app_title">Fmoviez - Free HD  Movies</string>
+    <string name="app_version">1.0.1</string>
+    <string name="contact_email">admin@Fmoviez.fun</string>
     <string name="copyright_text">Copyright @ FilmApik \nAll right reserved</string>
     <!-- App -->
     <string name="featured_tv_channels">Featured Tv Channel</string>
